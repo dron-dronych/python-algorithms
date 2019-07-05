@@ -9,3 +9,10 @@ My implementation of some algortihms. The list of algorithms is continuously pop
 * merge sort
 * checking for correctness of a parentheses sequence
 * tree traversal (pre-order, in-order, post-order)
+* finding greatest common divisor of two numbers
+* finding least common multiple of two numbers
+* last digit of the sum of Fibonacci numbers
+* last digit of the partial sum of Fibonacci numbers
+* last digit of the sum of squares of Fibonacci numbers
+* remainder of the nth Fibonacci number
+
