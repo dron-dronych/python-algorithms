@@ -1,7 +1,7 @@
 from typing import Tuple
 
 
-def knapsack_problem(constraints: Tuple[int], *args: Tuple[int]) -> int:
+def knapsack_problem(constraints: Tuple[int, int], *args: Tuple[int, int]) -> float:
     """
     an algorithm for the fractional knapsack problem.
 
@@ -53,5 +53,12 @@ if __name__ == '__main__':
             (60, 20),
             (100, 50),
             (120, 30)
+        )
+    )
+
+    print(
+        knapsack_problem(
+            (1, 10),
+            (500, 30)
         )
     )
