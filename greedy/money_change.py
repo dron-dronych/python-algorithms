@@ -39,7 +39,7 @@ def change_money(m):
 
 
 if __name__ == '__main__':
-    to_change = [1, 5, 10, 16, 1001, 0, -2]
+    to_change = [1, 5, 10, 9, 16, 1001, 0, -2]
 
     for c in to_change:
         try:
