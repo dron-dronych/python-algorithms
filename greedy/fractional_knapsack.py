@@ -1,5 +1,14 @@
-def knapsack_problem(constraints, *args):
-    """"""
+from typing import Tuple
+
+
+def knapsack_problem(constraints: Tuple[int], *args: Tuple[int]) -> int:
+    """
+    an algorithm for the fractional knapsack problem.
+
+    :param constraints: tuple: number 𝑛 of items and the capacity 𝑊 of a knapsack
+    :param args: tuple: value and weight of the ith item of n items
+    :return int: best value of filled knapsack
+    """
     num_items, capacity = constraints[0], constraints[1]
 
     values = []
