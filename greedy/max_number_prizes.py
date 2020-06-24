@@ -13,18 +13,18 @@ def max_num_prizes(n_candies):
     positive_ints = []
     remainder = n_candies
 
-    ints = range(1, n_candies + 1)
+    ints = list(range(1, n_candies + 1))
     pos = 0
 
-    while remainder != 0:
-        if ints[pos] not in positive_ints and sum():
+    for i in range(len(ints) - 1):
+        if (ints[pos] + ints[pos + 1]) <= remainder or ints[pos] == remainder:
+            positive_ints.append(ints[pos])
+            remainder -= ints[pos]
+            k += 1
+            pos += 1
 
-        positive_ints.append(ints[pos])
-        remainder -= ints[pos]
-        k += 1
-        pos += 1
-
-
+        else:
+            pos += 1
 
     return k, positive_ints
 
