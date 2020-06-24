@@ -6,4 +6,28 @@
 # TODO implement
 def max_num_prizes(n_candies):
     """"""
-    pass
+    if n_candies < 1 or n_candies > 10**9:
+        raise ValueError('N candies is out of range [1, 10^9]!')
+
+    k = 0
+    positive_ints = []
+    remainder = n_candies
+
+    ints = list(range(1, n_candies + 1))
+    pos = 0
+
+    for i in range(len(ints) - 1):
+        if (ints[pos] + ints[pos + 1]) <= remainder or ints[pos] == remainder:
+            positive_ints.append(ints[pos])
+            remainder -= ints[pos]
+            k += 1
+            pos += 1
+
+        else:
+            pos += 1
+
+    return k, positive_ints
+
+
+if __name__ == '__main__':
+    print(max_num_prizes(7))
