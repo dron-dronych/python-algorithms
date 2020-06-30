@@ -21,19 +21,27 @@ def collect_signatures(n_segments, *args):
     best_start = 0
     best_end = 0
 
-    for coord in args:
+    for coord_id, coord in enumerate(args):
         split_coord = coord.split(' ')
         start, end = int(split_coord[0]), int(split_coord[1])
 
+        # comparing against each next tuple after current
+        for next_coord in args[coord_id + 1:]:
+            split_coord_next = next_coord.split(' ')
+            start_next, end_next = int(split_coord_next[0]), int(split_coord_next[1])
 
+            if start_next >= start or start_next <= end:
+                best_point = start_next
+
+            elif end_next >= start or end_next <= end:
+                best_point = end_next
+
+            else:
+                best_point = end
 
         points.add(best_point)
 
-
-
-        prev_end = end
-
-    return num_points, points
+    return len(points), points
 
 
 if __name__ == '__main__':
