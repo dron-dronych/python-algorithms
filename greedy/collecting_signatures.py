@@ -21,6 +21,9 @@ def collect_signatures(n_segments, *args):
     best_start = 0
     best_end = 0
 
+    # safe move:
+    # choose range and a point in it w/ the highest num of intersections w/ other ranges
+
     for coord_id, coord in enumerate(args):
         split_coord = coord.split(' ')
         start, end = int(split_coord[0]), int(split_coord[1])
