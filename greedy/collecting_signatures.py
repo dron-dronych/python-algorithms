@@ -21,6 +21,8 @@ def collect_signatures(n_segments, *args):
     best_start = 0
     best_end = 0
 
+    num_intersections = []
+
     # safe move:
     # choose range and a point in it w/ the highest num of intersections w/ other ranges
 
@@ -28,21 +30,29 @@ def collect_signatures(n_segments, *args):
         split_coord = coord.split(' ')
         start, end = int(split_coord[0]), int(split_coord[1])
 
-        # comparing against each next tuple after current
-        for next_coord in args[coord_id + 1:]:
+        # comparing against each tuple except current
+        for next_coord_id, next_coord in enumerate(args):
+            if next_coord_id == coord_id:
+                continue
+
             split_coord_next = next_coord.split(' ')
             start_next, end_next = int(split_coord_next[0]), int(split_coord_next[1])
 
-            if start_next >= start or start_next <= end:
+            if start_next >= start and start_next <= end:
                 best_point = start_next
+                num_intersection = 1
 
-            elif end_next >= start or end_next <= end:
+            elif end_next >= start and end_next <= end:
                 best_point = end_next
+                num_intersection = 1
 
             else:
                 best_point = end
+                num_intersection = 0
 
-        points.add(best_point)
+            num_intersections.append((coord_id, next_coord_id, num_intersection))
+
+
 
     return len(points), points
 
