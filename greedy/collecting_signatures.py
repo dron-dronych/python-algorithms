@@ -21,6 +21,7 @@ def collect_signatures(n_segments, *args):
     best_start = 0
     best_end = 0
 
+    segments = []
     num_intersections = []
     coords_pass = []
 
@@ -31,33 +32,29 @@ def collect_signatures(n_segments, *args):
         split_coord = coord.split(' ')
         start, end = int(split_coord[0]), int(split_coord[1])
 
-        # comparing against each tuple except current
-        for next_coord_id, next_coord in enumerate(args):
-            if next_coord_id == coord_id:
-                continue
+        segments.append((start, end))
 
-            if next_coord_id in coords_pass or coord_id in coords_pass:
-                continue
+    segments = sorted(segments)
+    print(segments)
+    segments_skip = []
 
-            split_coord_next = next_coord.split(' ')
-            start_next, end_next = int(split_coord_next[0]), int(split_coord_next[1])
+    for coord_id, coord in enumerate(segments):
+        start, end = coord[0], coord[1]
 
-            if start_next >= start and start_next <= end:
-                best_point = start_next
-                num_intersection = 1
-                coords_pass.append(next_coord_id)
+        if coord_id in segments_skip:
+            continue
 
-            elif end_next >= start and end_next <= end:
-                best_point = end_next
-                num_intersection = 1
-                coords_pass.append(next_coord_id)
+        for coord_next_id, coord_next in enumerate(segments[coord_id + 1:], start=1): # shift by one relative to main loop
+            start_next, end_next = coord_next[0], coord_next[1]
 
-            else:
-                best_point = end
-                num_intersection = 0
-
-            num_intersections.append((coord_id, next_coord_id, num_intersection))
+            best_point = start_next
             points.add(best_point)
+
+            if start <= start_next <= end:
+                segments_skip.append(coord_next_id)
+            else:
+                break
+
 
 
 
