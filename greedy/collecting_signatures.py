@@ -15,18 +15,7 @@ def collect_signatures(n_segments, *args):
         raise ValueError('n_segments is out of range [1, 100]!')
 
     points = set()
-    num_points = 0
-    prev_start = 0
-    prev_end = 0
-    best_start = 0
-    best_end = 0
-
     segments = []
-    num_intersections = []
-    coords_pass = []
-
-    # safe move:
-    # choose range and a point in it w/ the highest num of intersections w/ other ranges
 
     for coord_id, coord in enumerate(args):
         split_coord = coord.split(' ')
@@ -35,7 +24,6 @@ def collect_signatures(n_segments, *args):
         segments.append((start, end))
 
     segments = sorted(segments)
-    print(segments)
     segments_skip = []
 
     for coord_id, coord in enumerate(segments):
@@ -46,7 +34,7 @@ def collect_signatures(n_segments, *args):
 
         best_point = end
 
-        for coord_next_id, coord_next in enumerate(segments[coord_id + 1:], start=1): # shift by one relative to main loop
+        for coord_next_id, coord_next in enumerate(segments[coord_id + 1:], start=coord_id + 1): # shift by one relative to main loop
             start_next, end_next = coord_next[0], coord_next[1]
 
             if start <= start_next <= end:
@@ -58,13 +46,7 @@ def collect_signatures(n_segments, *args):
 
         points.add(best_point)
 
-
-
-
-
-
-
-    return len(points), points, segments_skip
+    return len(points), points
 
 
 if __name__ == '__main__':
