@@ -44,21 +44,27 @@ def collect_signatures(n_segments, *args):
         if coord_id in segments_skip:
             continue
 
+        best_point = end
+
         for coord_next_id, coord_next in enumerate(segments[coord_id + 1:], start=1): # shift by one relative to main loop
             start_next, end_next = coord_next[0], coord_next[1]
 
-            best_point = start_next
-            points.add(best_point)
-
             if start <= start_next <= end:
+                best_point = start_next
                 segments_skip.append(coord_next_id)
+
             else:
-                break
+                pass
+
+        points.add(best_point)
 
 
 
 
-    return len(points), points
+
+
+
+    return len(points), points, segments_skip
 
 
 if __name__ == '__main__':
