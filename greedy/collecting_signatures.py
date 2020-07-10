@@ -41,9 +41,6 @@ def collect_signatures(n_segments, *args):
                 best_point = start_next
                 segments_skip.append(coord_next_id)
 
-            else:
-                pass
-
         points.add(best_point)
 
     return len(points), points
