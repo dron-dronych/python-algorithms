@@ -7,7 +7,7 @@ def collect_signatures(n_segments, *args):
 
     :param n_segments:
     :param args:
-    :return:
+    :return: min num of points, points
     """
     assert len(args) == n_segments
 
