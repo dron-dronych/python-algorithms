@@ -16,9 +16,25 @@ def max_salary(n_ints, *args):
         max_num = -1
         max_num_id = -1
         for i,n in enumerate(numbers):
+            max_num_str, n_str = str(max_num), str(n)
+
+            if len(n_str) > len(max_num_str):
+                n_part = int(n_str[:len(max_num_str)])
+                if n_part > max_num:
+                    max_num = n_part
+                    max_num_id = i
+
+                else:
+
+
+            if len(n_str) < len(max_num_str):
+                max_num_part = int(max_num_str[:len(n_str)])
+
+
             if n >= max_num:
                 max_num = n
                 max_num_id = i
+
         res.append(max_num)
         numbers.pop(max_num_id)
 
