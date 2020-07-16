@@ -13,11 +13,12 @@ def max_salary(n_ints, *args):
     res = []
 
     while len(numbers) > 0:
-        max_num = -1
+        max_num = 0
         max_num_id = -1
         for i,n in enumerate(numbers):
             if is_greater_or_equal(n, max_num):
                 max_num = n
+                max_num_id = i
 
         res.append(max_num)
         numbers.pop(max_num_id)
