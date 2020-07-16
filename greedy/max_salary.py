@@ -23,7 +23,7 @@ def max_salary(n_ints, *args):
         res.append(max_num)
         numbers.pop(max_num_id)
 
-    return res
+    return ''.join(map(str, res))
 
 def is_greater_or_equal(m, n):
     """
