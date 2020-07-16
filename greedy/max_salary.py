@@ -16,29 +16,35 @@ def max_salary(n_ints, *args):
         max_num = -1
         max_num_id = -1
         for i,n in enumerate(numbers):
-            max_num_str, n_str = str(max_num), str(n)
-
-            if len(n_str) > len(max_num_str):
-                n_part = int(n_str[:len(max_num_str)])
-                if n_part > max_num:
-                    max_num = n_part
-                    max_num_id = i
-
-                else:
-
-
-            if len(n_str) < len(max_num_str):
-                max_num_part = int(max_num_str[:len(n_str)])
-
-
-            if n >= max_num:
+            if is_greater_or_equal(n, max_num):
                 max_num = n
-                max_num_id = i
 
         res.append(max_num)
         numbers.pop(max_num_id)
 
     return res
+
+def is_greater_or_equal(m, n):
+    """
+    e.g., is_greater_or_equal(2, 21) should return True
+
+    :param m: int
+    :param n: int
+    :return: bool
+    """
+    if len(str(m)) == len(str(n)):
+        return True if m >= n else False
+
+    else:
+        min_length = min(
+            len(str(m)),
+            len(str(n))
+        )
+
+        if m >= n % (10 ** min_length):
+            return True
+        else:
+            return False
 
 
 if __name__ == '__main__':
