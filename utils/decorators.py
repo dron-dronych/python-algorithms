@@ -6,7 +6,7 @@ def timeit(func):
     """
     shows running time of a decorated function
     :param func: your favorite function to measure
-    :return: your favorite function + time it took to run it
+    :return: your favorite function + prints time it took to run it
     """
     def inner(*args, **kwargs):
         start = time()
