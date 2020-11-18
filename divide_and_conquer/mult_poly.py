@@ -6,11 +6,11 @@ def mult_poly_naive(arr1, arr2):
     """
     assert len(arr1) == len(arr2), 'Arrays must be of equal length!'
 
-    product = []
+    product = [0] * (2 * len(arr1) - 1)
 
     # TODO find better way to initialize array of given length
-    for i in range(2 * len(arr1) - 1):
-        product.append(0)
+    # for i in range(2 * len(arr1) - 1):
+    #     product.append(0)
 
     for i in range(len(arr1)):
         for j in range(len(arr2)):
@@ -28,7 +28,8 @@ def mult_poly_divide_conquer_naive(arr1, arr2, n, al, bl):
     product = []
 
     # TODO find better way to initialize array of given length
-    for i in range(2 * len(arr1) - 1):
+    for i in range(2 * n - 1):
+
         product.append(0)
 
     if n == 1:
@@ -42,7 +43,7 @@ def mult_poly_divide_conquer_naive(arr1, arr2, n, al, bl):
     d1e0 = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al + n//2, bl)
 
     product[n//2: n + n//2 - 2] += d1e0 + d0e1
-
+    print(product)
     return product
 
 
