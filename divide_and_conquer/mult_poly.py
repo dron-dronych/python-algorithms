@@ -8,10 +8,6 @@ def mult_poly_naive(arr1, arr2):
 
     product = [0] * (2 * len(arr1) - 1)
 
-    # TODO find better way to initialize array of given length
-    # for i in range(2 * len(arr1) - 1):
-    #     product.append(0)
-
     for i in range(len(arr1)):
         for j in range(len(arr2)):
             product[i + j] = arr1[i] * arr2[j]
