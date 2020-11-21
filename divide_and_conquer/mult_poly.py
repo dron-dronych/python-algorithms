@@ -25,7 +25,6 @@ def mult_poly_divide_conquer_naive(arr1, arr2, n, al, bl):
     :return:
     """
 
-    # TODO can we NOT use numpy arrays but plain python lists???
     product = np.zeros(2 * n - 1, dtype='int32')
 
     if n == 1:
@@ -37,6 +36,8 @@ def mult_poly_divide_conquer_naive(arr1, arr2, n, al, bl):
 
     d0e1 = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al, bl + n//2)
     d1e0 = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al + n//2, bl)
+
+    # this is the reason we use numpy arrays, not python lists
     product[n//2: n + n//2 - 1] += d1e0 + d0e1
 
     return product
