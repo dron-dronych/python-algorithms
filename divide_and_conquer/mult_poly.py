@@ -24,29 +24,22 @@ def mult_poly_divide_conquer_naive(arr1, arr2, n, al, bl):
     still O(n^2)
     :return:
     """
-    # product = []
-    #
-    # # TODO find better way to initialize array of given length
-    # for i in range(2 * n - 1):
-    #     product.append(None)
-    # print(product, '*********************')
 
+    # TODO can we NOT use numpy arrays but plain python lists???
     product = np.zeros(2 * n - 1, dtype='int32')
 
     if n == 1:
         product[0] = arr1[al] * arr2[bl]
         return product
-    # print(mult_poly_divide_conquer_naive(arr1, arr2, n//2, al, bl), n)
+
     product[0: n-1] = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al, bl)
     product[n: 2*n -1] = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al + n//2, bl + n//2)
 
     d0e1 = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al, bl + n//2)
     d1e0 = mult_poly_divide_conquer_naive(arr1, arr2, n//2, al + n//2, bl)
-    product[n//2: n + n//2 - 1] += d1e0 + d0e1 # check this line: makes the list longer, not replacing the values we want+
-    # print(product)
+    product[n//2: n + n//2 - 1] += d1e0 + d0e1
+
     return product
-
-
 
 
 if __name__ == '__main__':
