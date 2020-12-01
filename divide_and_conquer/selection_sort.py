@@ -10,7 +10,7 @@ def selection_sort(arr):
             if arr[j] < arr[min_element]:
                 min_element = j
 
-        tmp = arr[min_element]
+        tmp = arr[i]
         arr[i] = arr[min_element]
         arr[min_element] = tmp
 
