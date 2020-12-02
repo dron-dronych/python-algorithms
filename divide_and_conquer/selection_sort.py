@@ -1,8 +1,8 @@
 def selection_sort(arr):
     """
     selection sort O(n^2)
-    :param arr:
-    :return:
+    :param arr: list or tuple of values to sort
+    :return: modified arr
     """
     for i in range(len(arr)):
         min_element = i
