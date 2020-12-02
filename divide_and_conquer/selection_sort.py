@@ -18,7 +18,7 @@ def selection_sort(arr):
 
 
 if __name__ == '__main__':
-    arr = [12, 13, 43, 6, 890]
-    print(arr)
+    arr = [12, 13, 43, 6, 12, 890]
+    print('Original array: ', arr)
 
-    print(selection_sort(arr))
+    print('Array after sorting: ', selection_sort(arr))
