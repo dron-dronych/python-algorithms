@@ -7,7 +7,7 @@ def collect_signatures(n_segments, *args):
 
     :param n_segments:
     :param args:
-    :return:
+    :return: min num of points, points
     """
     assert len(args) == n_segments
 
@@ -40,9 +40,6 @@ def collect_signatures(n_segments, *args):
             if start <= start_next <= end:
                 best_point = start_next
                 segments_skip.append(coord_next_id)
-
-            else:
-                pass
 
         points.add(best_point)
 
