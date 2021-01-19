@@ -18,7 +18,6 @@ def binary_search(n, arr1, k, arr2):
 
     for elem in arr2:
         res.append(_binary_search(arr1, elem, 0, 4))
-        # print(res)
     return res
 
 
@@ -29,32 +28,15 @@ def _binary_search(arr, x, start, end):
     :param x: int: integer to search
     :return: index in arr or -1 if not found
     """
-    # if end < start:
-    #     return start - 1
-    n = end - start + 1
-    # mid_index = n // 2
-    # print(mid_index)
-    # print(start, end)
 
+    n = end - start + 1
     mid_index = int(start + (end - start) / 2)
-    # n = len(arr)
-    # print(n)
-    # print(start, end)
 
     if n <= 1 and arr[mid_index] != x:
         return -1
 
-
-
-
     if arr[mid_index] == x:
-        # print(arr[mid_index])
         return mid_index
-
-    left = arr[:mid_index]
-    right = arr[mid_index:]
-    # print(left, right)
-    # print(mid_index)
 
     if x < arr[mid_index]:
         pos = _binary_search(arr, x, start, mid_index -1)
@@ -70,4 +52,3 @@ if __name__ == '__main__':
     arr2 = [8, 1, 23, 1, 11]
 
     print(binary_search(5, arr1, 5, arr2))
-    # print(_binary_search(arr1, 11, 0, 4))
