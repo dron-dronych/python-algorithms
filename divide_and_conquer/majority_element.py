@@ -7,7 +7,10 @@ def has_majority_element(n, arr, start, end):
     """
     # base case
     if start == end:
-        return arr[start]
+        if n == 1:
+            return 1
+        else:
+            return arr[start]
 
     mid = start + (end - start) // 2
 
@@ -27,5 +30,5 @@ def has_majority_element(n, arr, start, end):
 
 
 if __name__ == '__main__':
-    arr = [1, 2, 3, 2]
-    print(has_majority_element(4, arr, 0, 3))
+    arr = [1]
+    print(has_majority_element(1, arr, 0, 0))
