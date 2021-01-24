@@ -1,4 +1,4 @@
-def majority_element(n, arr, start, end):
+def has_majority_element(n, arr, start, end):
     """
     check whether an input sequence contains a majority element
     :param n: int: num of elements in arr
@@ -11,8 +11,8 @@ def majority_element(n, arr, start, end):
 
     mid = start + (end - start) // 2
 
-    left = majority_element(len(arr), arr, start, mid)
-    right = majority_element(len(arr), arr, mid + 1, end)
+    left = has_majority_element(len(arr), arr, start, mid)
+    right = has_majority_element(len(arr), arr, mid + 1, end)
 
     if left == right:
         return left
@@ -28,4 +28,4 @@ def majority_element(n, arr, start, end):
 
 if __name__ == '__main__':
     arr = [1, 2, 3, 2]
-    print(majority_element(4, arr, 0, 3))
+    print(has_majority_element(4, arr, 0, 3))
