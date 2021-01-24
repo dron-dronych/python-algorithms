@@ -9,7 +9,7 @@ def majority_element(n, arr, start, end):
 
     # base case
     if start == end:
-        return 1
+        return arr[start]
 
 
     counter = 0
@@ -17,10 +17,10 @@ def majority_element(n, arr, start, end):
 
     left = majority_element(len(arr), arr, start, mid)
     right = majority_element(len(arr), arr, mid + 1, end)
-    print(left, right)
+    # print(left, right)
     if left == right:
         # print(left, right)
-        return 1
+        return left
 
     left_sum = sum(1 for i in range(start, end + 1) if arr[i] == left)
     right_sum = sum(1 for i in range(start, end + 1) if arr[i] == right)
@@ -32,5 +32,5 @@ def majority_element(n, arr, start, end):
 
 
 if __name__ == '__main__':
-    arr = [1, 2, 3]
-    print(majority_element(3, arr, 0, 2))
+    arr = [1, 2, 3, 2]
+    print(majority_element(4, arr, 0, 3))
