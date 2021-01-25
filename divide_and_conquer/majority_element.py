@@ -3,6 +3,8 @@ def has_majority_element(n, arr, start, end):
     check whether an input sequence contains a majority element
     :param n: int: num of elements in arr
     :param arr: list: a sequence of 𝑛 non-negative integers 𝑎0, 𝑎1, . . . , 𝑎𝑛−1.
+    :param start: int: index to begin with
+    :param end: int: index to end with (inclusive)
     :return: int: 1 or 0 if arr contains a majority element
     """
     # base case
