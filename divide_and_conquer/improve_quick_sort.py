@@ -7,6 +7,13 @@ def partition3(a, l, r):
     pass
 
 def partition2(a, l, r):
+    """
+    partition procedure for randomized quick sort
+    :param a: list: array to sort
+    :param l: int: left index
+    :param r: int: right index
+    :return: m: index of the element where a[:m] <= a[m] & a[m + 1] > a[m]
+    """
     x = a[l]
     j = l
     for i in range(l + 1, r + 1):
@@ -18,6 +25,13 @@ def partition2(a, l, r):
 
 
 def randomized_quick_sort(a, l, r):
+    """
+    quick sort with a random pivot aka starting point
+    :param a: list: array to sort
+    :param l: int: left index
+    :param r: int: right index
+    :return: sorted: list: sorted array a
+    """
     if l >= r:
         return
     k = random.randint(l, r)
