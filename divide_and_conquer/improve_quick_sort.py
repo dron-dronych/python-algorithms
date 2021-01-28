@@ -66,19 +66,8 @@ def randomized_quick_sort(a, l, r):
 
 
 if __name__ == '__main__':
-    # input = sys.stdin.read()
-    input = input()
+    input = sys.stdin.read()
     n, *a = list(map(int, input.split()))
     randomized_quick_sort(a, 0, n - 1)
     for x in a:
         print(x, end=' ')
-
-
-# def three_way_quicksort(n, arr):
-#     """
-#     optimized quick sort for arrays with few unique elements
-#     :param n: int: num of elements in arr
-#     :param arr: list: array of elements to sort
-#     :return: sorted: list: sorted array
-#     """
-#     pass
