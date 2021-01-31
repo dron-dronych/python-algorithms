@@ -18,12 +18,24 @@ def get_number_of_inversions(a, b, left, right):
     ave = (left + right) // 2
     number_of_inversions += get_number_of_inversions(a, b, left, ave)
     number_of_inversions += get_number_of_inversions(a, b, ave, right)
-    pass
+
+    # merge procedure
+    while len(a[left: right]) > 0 and len(b[left: right]) > 0:
+        # print(a, b)
+        if a[0] > b[0]:
+            number_of_inversions += 1
+            a.pop(0)
+        else:
+
+            b.pop(0)
+    print(number_of_inversions)
     return number_of_inversions
 
 
 if __name__ == '__main__':
-    input_ = sys.stdin.read()
-    n, *a = list(map(int, input_.split()))
+    # input_ = sys.stdin.readline()
+    # n, *a = list(map(int, input_.split()))
+    n =  5
+    a = [2, 3, 9, 2, 9]
     b = n * [0]
     print(get_number_of_inversions(a, b, 0, len(a)))
