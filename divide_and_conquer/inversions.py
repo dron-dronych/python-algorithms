@@ -16,6 +16,7 @@ def get_number_of_inversions(a, b, left, right):
     if right - left <= 1:
         return number_of_inversions
     ave = (left + right) // 2
+
     number_of_inversions += get_number_of_inversions(a, b, left, ave)
     number_of_inversions += get_number_of_inversions(a, b, ave, right)
 
@@ -25,15 +26,19 @@ def get_number_of_inversions(a, b, left, right):
 
     a_left = a[left: ave]
     b = a[ave: right]
-    print(a_left, b)
+    # print(a_left, b)
     while len(a_left) > 0 and len(b) > 0:
         # print(a_left, b)
         if a_left[0] > b[0]:
             number_of_inversions += 1
-            a_left.pop(0)
-        else:
-
+            res.append(b[0])
             b.pop(0)
+        else:
+            res.append(a_left[0])
+            a_left.pop(0)
+    res.extend(a_left)
+    res.extend(b)
+    print(res)
     # print(number_of_inversions)
     return number_of_inversions
 
