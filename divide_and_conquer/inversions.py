@@ -6,11 +6,11 @@ import sys
 def get_number_of_inversions(a, b, left, right):
     """
     The goal in this problem is to count the number of inversions of a given sequence.
-    :param a:
-    :param b:
-    :param left:
-    :param right:
-    :return:
+    :param a: list: array to sort
+    :param b: list: array with the same dimension as a (used as the buffer to store sorted array)
+    :param left: int: left index to start from
+    :param right: int: right index to finish with
+    :return: number_of_inversions: int: number of inversions in a
     """
     number_of_inversions = 0
     if right - left <= 1:
@@ -21,14 +21,12 @@ def get_number_of_inversions(a, b, left, right):
     number_of_inversions += get_number_of_inversions(a, b, ave, right)
 
     # merge procedure
-    # need to return a sorted array here
+    # need to sort an array here
     res = []
 
     a_left = a[left: ave]
     a_right = a[ave: right]
 
-
-    # print(a_left, b)
     while len(a_left) > 0 and len(a_right) > 0:
         # print(a_left, b)
         if a_left[0] > a_right[0]:
@@ -40,10 +38,9 @@ def get_number_of_inversions(a, b, left, right):
             a_left.pop(0)
     res.extend(a_left)
     res.extend(a_right)
-    # b[left: right] = res
+
     a[left: right] = res
-    print(b, res)
-    # print(number_of_inversions)
+
     return number_of_inversions
 
 
@@ -53,4 +50,4 @@ if __name__ == '__main__':
     n =  5
     a = [2, 3, 9, 2, 9]
     b = n * [0]
-    print(get_number_of_inversions(a, b, 0, len(a) - 1))
+    print(get_number_of_inversions(a, b, 0, len(a)))
