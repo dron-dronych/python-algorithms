@@ -15,7 +15,24 @@ def fast_count_segments(starts, ends, points):
     combined.extend(ends_tuples)
     combined.extend(points_tuples)
 
+    # sorted combined list is iterated over once
+    # this is a function from builtins - used to test the idea
+    # TODO replace with merge sort
+    combined_sorted = sorted(combined)
 
+    j = -1
+    k = 0 # shows the num of open intervals
+
+    for i in combined_sorted:
+        if i[1] == 'p':
+            j += 1
+            cnt[j] += k
+
+        elif i[1] == 'l':
+            k += 1
+
+        else:
+            k -= 1 # closing one of the intervals
 
     return cnt
 
@@ -38,6 +55,8 @@ if __name__ == '__main__':
     ends   = data[3:2 * n + 2:2]
     points = data[2 * n + 2:]
     #use fast_count_segments
-    cnt = naive_count_segments(starts, ends, points)
+    # cnt = naive_count_segments(starts, ends, points)
+    cnt = fast_count_segments(starts, ends, points)
+
     for x in cnt:
         print(x, end=' ')
