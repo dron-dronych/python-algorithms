@@ -1,6 +1,40 @@
 # Uses python3
 import sys
 
+
+def merge_sort(arr):
+    n = len(arr)
+
+    if n == 1:
+        return arr
+
+    mid = n // 2
+
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)
+
+
+def merge(arr1, arr2):
+
+    res = []
+
+    while len(arr1) > 0 and len(arr2) > 0:
+        if arr1[0] <= arr2[0]:
+            res.append(arr1[0])
+            arr1.pop(0)
+
+        else:
+            res.append(arr2[0])
+            arr2.pop(0)
+
+    res.extend(arr1)
+    res.extend(arr2)
+
+    return res
+
+
 def fast_count_segments(starts, ends, points):
     cnt = [0] * len(points)
 
@@ -20,6 +54,10 @@ def fast_count_segments(starts, ends, points):
     # TODO replace with merge sort
     combined_sorted = sorted(combined)
 
+    # test merge sort impl vs native sorted func
+    # TODO replace on success
+    assert sorted(combined) == merge_sort(combined), 'ACHTUNG!!!'
+
     j = -1
     k = 0 # shows the num of open intervals
 
@@ -36,6 +74,7 @@ def fast_count_segments(starts, ends, points):
 
     return cnt
 
+
 def naive_count_segments(starts, ends, points):
     cnt = [0] * len(points)
     for i in range(len(points)):
@@ -43,6 +82,7 @@ def naive_count_segments(starts, ends, points):
             if starts[j] <= points[i] <= ends[j]:
                 cnt[i] += 1
     return cnt
+
 
 if __name__ == '__main__':
     # input = sys.stdin.read()
@@ -52,8 +92,9 @@ if __name__ == '__main__':
     n = data[0]
     m = data[1]
     starts = data[2:2 * n + 2:2]
-    ends   = data[3:2 * n + 2:2]
+    ends = data[3:2 * n + 2:2]
     points = data[2 * n + 2:]
+
     #use fast_count_segments
     # cnt = naive_count_segments(starts, ends, points)
     cnt = fast_count_segments(starts, ends, points)
