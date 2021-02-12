@@ -4,7 +4,7 @@ My implementation of some algortihms. The list of algorithms is continuously pop
 What's covered in this repository includes various approaches to solving algorithmic tasks. This includes the following important topics in computer science:
 - [greedy algorithms](/greedy)
 - [divide & conquer](/divide_and_conquer)
-- dynamic programming
+- [dynamic programming](/dynamic_programming)
 
 The repository is continuously updated with new problems and solutions in various topics on algorithms.
 
@@ -16,6 +16,9 @@ This is a simple yet powerful technique: make an optimal (locally) step at each 
 
 ### Divide-n-conquer
 Main principle is to divide a problem into **disjoint** problems and tackle each separately until the solution is found. This is achieved by recursively calling these sub-problems.
+
+### Dynamic Programming
+Divide a problem into sub-problems and "optimize" recursive approach so that instead of calling recursive procedure you use the results precomputed before. This reduces the overall running time as comprared to recursive procedures.
 
 ## Contents
 
