@@ -20,7 +20,7 @@ Main principle is to divide a problem into **disjoint** problems and tackle each
 ### Dynamic Programming
 Divide a problem into sub-problems and "optimize" recursive approach so that instead of calling recursive procedure you use the results precomputed before. This reduces the overall running time as comprared to recursive procedures.
 
-## Contents
+## Misc problems
 
 * calculation of the nth Fibonacci number (recursive [slow] and fast implementation [with memoization])
 * determination of the remainder from division of the nth Fibonacci number by an integer
