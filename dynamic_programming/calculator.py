@@ -2,16 +2,20 @@
 # starting from the number 1.
 
 import sys
+from typing import List, Tuple
 
-def primitive_calculator(n):
+
+def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     """
 
     Parameters
     ----------
-    n
+    n -- calculate up to this point
 
     Returns
     -------
+    k - minimum number of operations to make to arrive at n
+    intermediate_results - results at each of the steps from k moves
 
     """
     # theres an alternative to solve this using a while loop checking
