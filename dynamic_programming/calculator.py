@@ -25,27 +25,29 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     remainder = n
 
     for i in range(1, n):
-        max_move = -1
-        best_move = 0
+        if remainder > 0:
+            # remainder = n - intermediate_results[i - 1]
+            max_move = -1
+            best_move = 0
 
-        if 3 * i > max_move:
-            intermediate_results[i] = 3 * i + intermediate_results[i - 1]
-            max_move = 3 * i
-            best_move = 1
+            if 3 * intermediate_results[i - 1] > max_move and 3 * intermediate_results[i - 1] <= n:
+                intermediate_results[i] = 3 * intermediate_results[i - 1]
+                max_move = 3 * intermediate_results[i - 1]
+                best_move = 1
 
 
-        if 2 * i > max_move:
-            intermediate_results[i] = 2 * i + intermediate_results[i - 1]
-            max_move = 2 * i
-            best_move = 1
+            if 2 * intermediate_results[i - 1] > max_move and 2 * intermediate_results[i - 1] <= n:
+                intermediate_results[i] = 2 * intermediate_results[i - 1]
+                max_move = 2 * intermediate_results[i - 1]
+                best_move = 1
 
-        if 1 + i > max_move:
-            intermediate_results[i] = 1 + i + intermediate_results[i - 1]
-            max_move = 1 + i
-            best_move = 1
+            if 1 + intermediate_results[i - 1] > max_move and 1 + intermediate_results[i - 1] <= n:
+                intermediate_results[i] = 1 + intermediate_results[i - 1]
+                max_move = 1 + intermediate_results[i - 1]
+                best_move = 1
 
-        k += best_move
-        remainder = n - intermediate_results[i]
+            k += best_move
+            remainder = n - intermediate_results[i]
     return k, intermediate_results
 
 
@@ -54,4 +56,10 @@ if __name__ == '__main__':
     print(primitive_calculator(n))
 
     n = 11
+    print(primitive_calculator(n))
+
+    n = 5
+    print(primitive_calculator(n))
+
+    n = 96234
     print(primitive_calculator(n))
