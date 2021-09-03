@@ -20,9 +20,13 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     """
     # theres an alternative to solve this using a while loop checking
     # on the remainder until it is 0
+
+    # TODO try going backwards by choosing the most optimal way
     k = 1
     intermediate_results = [0] * n
     remainder = n
+
+    # TODO try choosing the REMAINDER in the most optimal way
 
     for i in range(1, n):
         if remainder > 0:
@@ -45,6 +49,28 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
                 intermediate_results[i] = 1 + intermediate_results[i - 1]
                 max_move = 1 + intermediate_results[i - 1]
                 best_move = 1
+
+    # for i in range(n - 1, 1, -1):
+    #     if remainder > 0:
+    #         remainder = n - intermediate_results[i - 1]
+    #         max_move = -1
+    #         best_move = 0
+    #
+    #         if i % 3 == 0 and i / 3 > max_move:
+    #             intermediate_results[i] = i / 3
+    #             max_move = i % 3
+    #             best_move = 1
+    #
+    #         if i % 2 == 0 and i / 2 > max_move:
+    #             intermediate_results[i] = i / 2
+    #             max_move = i % 2
+    #             best_move = 1
+    #
+    #         if i - 1 > max_move:
+    #             intermediate_results[i] = i - 1
+    #             max_move = i - 1
+    #             best_move = 1
+
 
             k += best_move
             remainder = n - intermediate_results[i]
