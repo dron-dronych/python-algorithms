@@ -21,59 +21,34 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     # theres an alternative to solve this using a while loop checking
     # on the remainder until it is 0
 
-    # TODO try going backwards by choosing the most optimal way
-    k = 1
-    intermediate_results = [0] * n
     remainder = n
+    k = 0
+    intermediate_results = [n]
 
-    # TODO try choosing the REMAINDER in the most optimal way
+    while remainder > 0:
+        best_move = sys.maxsize
 
-    for i in range(1, n):
-        if remainder > 0:
-            # remainder = n - intermediate_results[i - 1]
-            max_move = -1
-            best_move = 0
-
-            if 3 * intermediate_results[i - 1] > max_move and 3 * intermediate_results[i - 1] <= n:
-                intermediate_results[i] = 3 * intermediate_results[i - 1]
-                max_move = 3 * intermediate_results[i - 1]
-                best_move = 1
+        if remainder % 3 == 0 and remainder / 3 < best_move:
+            best_move = remainder // 3
+            intermediate_results.append(best_move)
+            count = 1
 
 
-            if 2 * intermediate_results[i - 1] > max_move and 2 * intermediate_results[i - 1] <= n:
-                intermediate_results[i] = 2 * intermediate_results[i - 1]
-                max_move = 2 * intermediate_results[i - 1]
-                best_move = 1
-
-            if 1 + intermediate_results[i - 1] > max_move and 1 + intermediate_results[i - 1] <= n:
-                intermediate_results[i] = 1 + intermediate_results[i - 1]
-                max_move = 1 + intermediate_results[i - 1]
-                best_move = 1
-
-    # for i in range(n - 1, 1, -1):
-    #     if remainder > 0:
-    #         remainder = n - intermediate_results[i - 1]
-    #         max_move = -1
-    #         best_move = 0
-    #
-    #         if i % 3 == 0 and i / 3 > max_move:
-    #             intermediate_results[i] = i / 3
-    #             max_move = i % 3
-    #             best_move = 1
-    #
-    #         if i % 2 == 0 and i / 2 > max_move:
-    #             intermediate_results[i] = i / 2
-    #             max_move = i % 2
-    #             best_move = 1
-    #
-    #         if i - 1 > max_move:
-    #             intermediate_results[i] = i - 1
-    #             max_move = i - 1
-    #             best_move = 1
+        if remainder % 2 == 0 and remainder / 2 < best_move:
+            best_move = remainder // 2
+            intermediate_results.append(best_move)
+            count = 1
 
 
-            k += best_move
-            remainder = n - intermediate_results[i]
+        if remainder - 1 < best_move:
+            best_move = remainder - 1
+            intermediate_results.append(best_move)
+            count = 1
+
+        remainder = best_move
+        k += count
+
+
     return k, intermediate_results
 
 
