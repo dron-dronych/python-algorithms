@@ -21,35 +21,35 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     # theres an alternative to solve this using a while loop checking
     # on the remainder until it is 0
 
+    # STORE PREVIOUSLY COMPUTED MIN NUM OF STEPS + INTERMEDIATE RESULTS
+
     remainder = n
-    k = 0
-    intermediate_results = [n]
+    num_steps = [0] * (n + 1)
+    intermediate_results = [0]
 
-    while remainder > 0:
-        best_move = sys.maxsize
+    for i in range(1, n + 1):
+        num_steps[i] = sys.maxsize
 
-        if remainder % 3 == 0 and remainder / 3 < best_move:
-            best_move = remainder // 3
-            intermediate_results.append(best_move)
-            count = 1
+        if i % 3 == 0:
+            best = 3 * (i - 1)
+            step = num_steps[i // 3] + 1 # whats min num of moves at step i - 1 ???
+            if step < num_steps[i]:
+                num_steps[i] = step
 
-
-        if remainder % 2 == 0 and remainder / 2 < best_move:
-            best_move = remainder // 2
-            intermediate_results.append(best_move)
-            count = 1
-
-
-        if remainder - 1 < best_move:
-            best_move = remainder - 1
-            intermediate_results.append(best_move)
-            count = 1
-
-        remainder = best_move
-        k += count
+        if i % 2 == 0:
+            best = 2 * (i - 1)
+            step = num_steps[i // 2] + 1
+            if step < num_steps[i]:
+                num_steps[i] = step
 
 
-    return k, intermediate_results
+
+        best = 1 + (i - 1)
+        step = num_steps[i - 1] + 1
+        if step < num_steps[i]:
+            num_steps[i] = step
+
+    return num_steps[-1] - 1
 
 
 if __name__ == '__main__':
