@@ -27,7 +27,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     num_steps = [0] * (n + 1)
     intermediate_results = {}
 
-    for i in range(1, n + 1):
+    for i in range(2, n + 1):
         num_steps[i] = sys.maxsize
 
         if i % 3 == 0:
@@ -56,7 +56,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
             intermediate_results[step] = i
 
 
-    return num_steps[-1] - 1, intermediate_results
+    return num_steps[-1] - 1, num_steps
 
 
 if __name__ == '__main__':
