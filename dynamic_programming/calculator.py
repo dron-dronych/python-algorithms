@@ -36,7 +36,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
             if step < num_steps[i]:
                 num_steps[i] = step
 
-                intermediate_results[step] = i // 3
+                intermediate_results[i] = i // 3
 
 
         if i % 2 == 0:
@@ -45,7 +45,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
             if step < num_steps[i]:
                 num_steps[i] = step
 
-                intermediate_results[step] = i // 2
+                intermediate_results[i] = i // 2
 
 
         best = 1 + (i - 1)
@@ -53,13 +53,22 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
         if step < num_steps[i]:
             num_steps[i] = step
 
-            intermediate_results[step] = i - 1
+            intermediate_results[i] = i - 1
+
+    i = intermediate_results[-1]
+    res = []
+
+    while i > 1:
+        res.append(i)
+        prev = intermediate_results[i]
+
+        i = prev
 
     # intermediate_results = [0] * num_steps[-1]
 
 
 
-    return num_steps[-1], intermediate_results, num_steps
+    return num_steps[-1], res
 
 
 if __name__ == '__main__':
