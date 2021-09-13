@@ -18,9 +18,6 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
     intermediate_results - results at each of the steps from k moves
 
     """
-    # theres an alternative to solve this using a while loop checking
-    # on the remainder until it is 0
-
     # STORE PREVIOUSLY COMPUTED MIN NUM OF STEPS + INTERMEDIATE RESULTS
 
     remainder = n
@@ -32,7 +29,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
 
         if i % 3 == 0:
             best = 3 * (i - 1)
-            step = num_steps[i // 3] + 1 # whats min num of moves at step i - 1 ???
+            step = num_steps[i // 3] + 1
             if step < num_steps[i]:
                 num_steps[i] = step
 
@@ -63,10 +60,6 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
         prev = intermediate_results[i]
 
         i = prev
-
-    # intermediate_results = [0] * num_steps[-1]
-
-
 
     return num_steps[-1], res
 
