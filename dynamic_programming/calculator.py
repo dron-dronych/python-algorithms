@@ -61,7 +61,7 @@ def primitive_calculator(n: int) -> Tuple[int, List[int]]:
 
         i = prev
 
-    return num_steps[-1], res
+    return num_steps[-1], res[::-1] + [n]
 
 
 if __name__ == '__main__':
